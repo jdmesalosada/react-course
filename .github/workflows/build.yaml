@@ -23,4 +23,4 @@ jobs:
         REPO_NAME: ${{ github.event.inputs.repository_name }}
         BRANCH: ${{ github.event.inputs.branch }}
       run: |
-        curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{secrets.PAT_TOKEN}}" https://api.github.com/repos/jdmesalosada/serenity-rest-archetype/dispatches -d '{"ref": "${BRANCH}"}'
+        curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{secrets.PAT_TOKEN}}" https://api.github.com/repos/jdmesalosada/serenity-rest-archetype/dispatches -d '{"event_type":"on-demand-test","client_payload":{"unit":false,"integration":true}}'
