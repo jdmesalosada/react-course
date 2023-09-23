@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       repository_name:
-        description: 'serenity-rest-archetype'
+        description: 'Name of the repository to build (e.g., owner/repo)'
         required: true
       branch:
-        description: 'main'
+        description: 'Branch to build (e.g., main)'
         required: true
 
 jobs:
