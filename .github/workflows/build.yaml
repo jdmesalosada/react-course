@@ -18,6 +18,6 @@ jobs:
     - uses: convictional/trigger-workflow-and-wait@v1.3.0
       with:
         owner: jdmesalosada
-        repo: react-course
+        repo: serenity-rest-archetype
         github_token: ${{ secrets.PAT_TOKEN }}
-        workflow_file_name: testing-flow.yaml          
+        workflow_file_name: testing-flow.yaml
