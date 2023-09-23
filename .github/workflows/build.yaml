@@ -1,16 +1,9 @@
 name: Trigger Another Project Build
 
 on:
-  workflow_dispatch:
-    inputs:
-      repository_name:
-        description: 'Name of the repository to build (e.g., owner/repo)'
-        required: true
-        default: 'serenity-rest-archetype'
-      branch:
-        description: 'Branch to build (e.g., main)'
-        required: true
-        default: 'main'
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -19,10 +12,10 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
-
-    - name: Trigger Another Project Build
-      env:
-        REPO_NAME: ${{ github.event.inputs.repository_name }}
-        BRANCH: ${{ github.event.inputs.branch }}
-      run: |
-        curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{secrets.PAT_TOKEN}}" https://api.github.com/repos/jdmesalosada/serenity-rest-archetype/dispatches -d '{"event_type": "Trigger Workflow"}'
+    - name: Run testing  
+      uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+          owner: jdmesalosada
+          repo: react-course
+          github_token: ${{ secrets.PAT_TOKEN }}
+          workflow_file_name: testing-flow.yaml
