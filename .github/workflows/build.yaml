@@ -21,3 +21,5 @@ jobs:
         repo: serenity-rest-archetype
         github_token: ${{ secrets.PAT_TOKEN }}
         workflow_file_name: testing-flow.yaml
+        wait_interval: 10
+        client_payload: -PincludeTags='login | fix' -PexcludeTags='prod' -i
